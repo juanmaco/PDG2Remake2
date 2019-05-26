@@ -50,6 +50,7 @@ public class MyLogica : MonoBehaviour {
 
         // Use this for initialization
         void Start () {
+            anim.SetInteger("Kauca", 0);
             rCanvas.SetActive(false);
             StartCoroutine(Instrucciones());
             playerLevel = 0;
@@ -233,24 +234,35 @@ public class MyLogica : MonoBehaviour {
         }
         IEnumerator Wrong()
         {
+            for(int i=0; i< myButtons.Length; i++)
+            {
+                myButtons[i].errado = false;
+            }
             lifeT.DOColor(Color.red, 0.5f);
             lifeT.transform.DOScale(1.5f, 1f);
             wrong.Play();
+            anim.SetInteger("Kauca", 5);
             errado.SetActive(true);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
+            anim.SetInteger("Kauca", 0);
             lifeT.DOColor(Color.black, 0.5f);
             lifeT.transform.DOScale(1f, 1f);
             errado.SetActive(false);
-            myButtons[0].errado = true;
+            for (int i = 0; i < myButtons.Length; i++)
+            {
+                myButtons[i].errado = true;
+            }
         }
         IEnumerator Instrucciones()
         {
             maquina = false;
             tuto2.Play();
+            StartCoroutine(AnimationManager());
             yield return new WaitForSeconds(18f);
             tuto3.Play();
             yield return new WaitForSeconds(3f);
             tuto4.Play();
+            StartCoroutine(AnimationManager3());
             yield return new WaitForSeconds(4f);
             myButtons[0].ClickedColor();
             myButtons[0].mySound.Play();
@@ -263,6 +275,7 @@ public class MyLogica : MonoBehaviour {
         IEnumerator Instrucciones2()
         {
             yield return new WaitForSeconds(1f);
+            StartCoroutine(AnimationManager4());
             tuto6.Play();
             yield return new WaitForSeconds(3f);
             myButtons[1].ClickedColor();
@@ -322,6 +335,31 @@ public class MyLogica : MonoBehaviour {
             rCanvas.SetActive(false);
             maquina = true;
             continuar = 6;
+        }
+        IEnumerator AnimationManager()
+        {
+            anim.SetInteger("Kauca", 6);
+            yield return new WaitForSeconds(10f);
+            anim.SetInteger("Kauca", 10);
+        }
+        IEnumerator AnimationManager2()
+        {
+            anim.SetInteger("Kauca", 7);
+            yield return new WaitForSeconds(1f);
+            anim.SetInteger("Kauca", 0);
+        }
+        IEnumerator AnimationManager3()
+        {
+            anim.SetInteger("Kauca", 0);
+            anim.SetInteger("Kauca", 8);
+            yield return new WaitForSeconds(1f);
+            anim.SetInteger("Kauca", 0);
+        }
+        IEnumerator AnimationManager4()
+        {
+            anim.SetInteger("Kauca", 9);
+            yield return new WaitForSeconds(2f);
+            anim.SetInteger("Kauca", 0);
         }
     }
 }

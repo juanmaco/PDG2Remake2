@@ -28,7 +28,7 @@ public class OnClick : MonoBehaviour {
             mReneder.enabled=true;
             myTp = transform.position;
             seeActivo = false;
-            anim.SetInteger("Kauca", 0);
+            //anim.SetInteger("Kauca", 0);
             errado = true;
 	}
 	
@@ -74,7 +74,7 @@ public class OnClick : MonoBehaviour {
             anim.SetInteger("Kauca", numeroAnim);
             yield return new WaitForSeconds(1f);
             anim.SetInteger("Kauca", 0);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             }
             else
             {
