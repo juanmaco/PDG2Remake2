@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class ButtonClick : MonoBehaviour {
+public class PasarVideo : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		StartCoroutine(Pasar());
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-   public void OnClick()
-    {
-        SceneManager.LoadScene("video");
-    }
+	IEnumerator Pasar(){
+		yield return new WaitForSeconds(111f);
+		SceneManager.LoadScene("frutibau");
+	}
 }

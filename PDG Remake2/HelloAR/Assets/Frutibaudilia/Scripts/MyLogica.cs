@@ -94,7 +94,7 @@ public class MyLogica : MonoBehaviour {
                     playerLevel = 0;
                     maquina = true;
                     StartCoroutine(Wait());
-                    if (level == 4)
+                    if (level == 7)
                     {
                         maquina = false;
                         player = false;
